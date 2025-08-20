@@ -255,3 +255,11 @@
 {"timestamp":"2025-08-20T09:16:45.004027","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/dim_entreprise.py","logger":"airflow.models.dagbag.DagBag"}
 {"timestamp":"2025-08-20T09:17:15.953406","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/dim_entreprise.py","logger":"airflow.models.dagbag.DagBag"}
 {"timestamp":"2025-08-20T09:17:46.839078","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/dim_entreprise.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-08-20T09:18:17.743159","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/dim_entreprise.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-08-20T09:18:48.506582","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/dim_entreprise.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-08-20T09:19:19.341602","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/dim_entreprise.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-08-20T09:19:49.838757","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/dim_entreprise.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-08-20T09:20:20.679815","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/dim_entreprise.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-08-20T09:20:51.348956","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/dim_entreprise.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-08-20T09:21:21.998918","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/dim_entreprise.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-08-20T09:21:52.661603","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/dim_entreprise.py","logger":"airflow.models.dagbag.DagBag"}

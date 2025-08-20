@@ -255,3 +255,12 @@
 {"timestamp":"2025-08-20T09:16:41.650082","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/fact_production.py","logger":"airflow.models.dagbag.DagBag"}
 {"timestamp":"2025-08-20T09:17:12.557968","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/fact_production.py","logger":"airflow.models.dagbag.DagBag"}
 {"timestamp":"2025-08-20T09:17:43.436030","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/fact_production.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-08-20T09:18:14.373905","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/fact_production.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-08-20T09:18:45.095563","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/fact_production.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-08-20T09:19:16.018604","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/fact_production.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-08-20T09:19:46.568574","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/fact_production.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-08-20T09:20:17.428425","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/fact_production.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-08-20T09:20:48.108392","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/fact_production.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-08-20T09:21:18.777432","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/fact_production.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-08-20T09:21:49.495811","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/fact_production.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-08-20T09:22:20.206300","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/fact_production.py","logger":"airflow.models.dagbag.DagBag"}
