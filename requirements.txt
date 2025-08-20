@@ -1,0 +1,4 @@
+apache-airflow-providers-postgres==6.2.2
+apache-airflow-providers-standard
+pandas
+psycopg2-binary

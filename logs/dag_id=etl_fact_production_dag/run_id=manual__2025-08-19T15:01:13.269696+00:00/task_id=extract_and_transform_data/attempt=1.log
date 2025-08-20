@@ -1,0 +1,18 @@
+{"timestamp":"2025-08-19T15:01:33.026843","level":"info","event":"DAG bundles loaded: dags-folder, example_dags","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager"}
+{"timestamp":"2025-08-19T15:01:33.027181","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/fact_production.py","logger":"airflow.models.dagbag.DagBag"}
+{"timestamp":"2025-08-19T15:01:33.051934Z","level":"info","event":"Task instance is in running state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-08-19T15:01:33.052068Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.QUEUED","chan":"stdout","logger":"task"}
+{"timestamp":"2025-08-19T15:01:33.052141Z","level":"info","event":"Current task name:extract_and_transform_data","chan":"stdout","logger":"task"}
+{"timestamp":"2025-08-19T15:01:33.052185Z","level":"info","event":"Dag name:etl_fact_production_dag","chan":"stdout","logger":"task"}
+{"timestamp":"2025-08-19T15:01:33.052801Z","level":"info","event":"Starting data extraction and transformation...","chan":"stdout","logger":"task"}
+{"timestamp":"2025-08-19T15:01:33.053668","level":"warning","event":"/home/airflow/.local/lib/python3.12/site-packages/airflow/models/connection.py:471: DeprecationWarning: Using Connection.get_connection_from_secrets from `airflow.models` is deprecated.Please use `from airflow.sdk import Connection` instead\n  warnings.warn(\n","logger":"py.warnings"}
+{"timestamp":"2025-08-19T15:01:33.057625","level":"info","event":"Connection Retrieved 'core_recette'","logger":"airflow.hooks.base"}
+{"timestamp":"2025-08-19T15:01:33.099305Z","level":"info","event":"Data extracted and joined: 366 rows","chan":"stdout","logger":"task"}
+{"timestamp":"2025-08-19T15:01:33.101002Z","level":"info","event":"Data after filtering NULL id_variable: 79 rows","chan":"stdout","logger":"task"}
+{"timestamp":"2025-08-19T15:01:33.101617Z","level":"info","event":"Data after filtering non-numeric values: 63 rows","chan":"stdout","logger":"task"}
+{"timestamp":"2025-08-19T15:01:33.110403Z","level":"info","event":"Data transformation completed. Final dataset: 63 rows","chan":"stdout","logger":"task"}
+{"timestamp":"2025-08-19T15:01:33.110747","level":"info","event":"Done. Returned value was: Successfully processed 63 rows","logger":"airflow.task.operators.airflow.providers.standard.operators.python.PythonOperator"}
+{"timestamp":"2025-08-19T15:01:33.110917","level":"info","event":"Pushing xcom","ti":"RuntimeTaskInstance(id=UUID('0198c2d9-3bc9-7ca1-9001-41754d7aac31'), task_id='extract_and_transform_data', dag_id='etl_fact_production_dag', run_id='manual__2025-08-19T15:01:13.269696+00:00', try_number=1, map_index=-1, hostname='b751e2694e77', context_carrier={}, task=<Task(PythonOperator): extract_and_transform_data>, bundle_instance=LocalDagBundle(name=dags-folder), max_tries=1, start_date=datetime.datetime(2025, 8, 19, 15, 1, 32, 708483, tzinfo=datetime.timezone.utc), end_date=None, state=<TaskInstanceState.RUNNING: 'running'>, is_mapped=False, rendered_map_index=None, log_url='http://localhost:8080/dags/etl_fact_production_dag/runs/manual__2025-08-19T15%3A01%3A13.269696%2B00%3A00/tasks/extract_and_transform_data?try_number=1')","logger":"task"}
+{"timestamp":"2025-08-19T15:01:33.122215Z","level":"info","event":"Task instance in success state","chan":"stdout","logger":"task"}
+{"timestamp":"2025-08-19T15:01:33.122340Z","level":"info","event":" Previous state of the Task instance: TaskInstanceState.RUNNING","chan":"stdout","logger":"task"}
+{"timestamp":"2025-08-19T15:01:33.122421Z","level":"info","event":"Task operator:<Task(PythonOperator): extract_and_transform_data>","chan":"stdout","logger":"task"}

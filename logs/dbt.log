@@ -1,0 +1,196 @@
+[0m12:35:41.735303 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1067a1130>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1068d0c20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1068d0950>]}
+
+
+============================== 12:35:41.738443 | df0cedf1-5072-4073-a65c-a73e403c09e4 ==============================
+[0m12:35:41.738443 [info ] [MainThread]: Running with dbt=1.10.9
+[0m12:35:41.738736 [debug] [MainThread]: running dbt with arguments {'send_anonymous_usage_stats': 'True', 'indirect_selection': 'eager', 'empty': 'None', 'target_path': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'printer_width': '80', 'debug': 'False', 'profiles_dir': '/Users/antoine/.dbt', 'no_print': 'None', 'invocation_command': 'dbt init etl_test_dbt_ariflow', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'introspect': 'True', 'log_cache_events': 'False', 'log_format': 'default', 'fail_fast': 'False', 'partial_parse': 'True', 'static_parser': 'True', 'log_path': 'logs', 'cache_selected_only': 'False', 'version_check': 'True', 'warn_error': 'None', 'write_json': 'True'}
+[0m12:35:41.749017 [debug] [MainThread]: Starter project path: /Users/antoine/code/test_etl_datmart/.venv_airflow/lib/python3.12/site-packages/dbt/include/starter_project
+[0m12:35:41.753054 [info ] [MainThread]: 
+Your new dbt project "etl_test_dbt_ariflow" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m12:35:41.753238 [info ] [MainThread]: Setting up your profile.
+[0m12:38:40.962175 [error] [MainThread]: Encountered an error:
+
+[0m12:38:40.979643 [error] [MainThread]: Traceback (most recent call last):
+  File "/Users/antoine/code/test_etl_datmart/.venv_airflow/lib/python3.12/site-packages/dbt/cli/requires.py", line 178, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antoine/code/test_etl_datmart/.venv_airflow/lib/python3.12/site-packages/dbt/cli/requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antoine/code/test_etl_datmart/.venv_airflow/lib/python3.12/site-packages/dbt/cli/main.py", line 483, in init
+    results = task.run()
+              ^^^^^^^^^^
+  File "/Users/antoine/code/test_etl_datmart/.venv_airflow/lib/python3.12/site-packages/dbt/task/init.py", line 346, in run
+    self.setup_profile(profile_name)
+  File "/Users/antoine/code/test_etl_datmart/.venv_airflow/lib/python3.12/site-packages/dbt/task/init.py", line 261, in setup_profile
+    adapter = self.ask_for_adapter_choice()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antoine/code/test_etl_datmart/.venv_airflow/lib/python3.12/site-packages/dbt/task/init.py", line 242, in ask_for_adapter_choice
+    numeric_choice = click.prompt(prompt_msg, type=click.INT)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/antoine/code/test_etl_datmart/.venv_airflow/lib/python3.12/site-packages/click/termui.py", line 168, in prompt
+    value = prompt_func(prompt)
+            ^^^^^^^^^^^^^^^^^^^
+  File "/Users/antoine/code/test_etl_datmart/.venv_airflow/lib/python3.12/site-packages/click/termui.py", line 151, in prompt_func
+    raise Abort() from None
+click.exceptions.Abort
+
+[0m12:38:40.999012 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": false, "command_wall_clock_time": 179.3009, "process_in_blocks": "0", "process_kernel_time": 0.14117, "process_mem_max_rss": "105840640", "process_out_blocks": "0", "process_user_time": 0.731337}
+[0m12:38:40.999897 [debug] [MainThread]: Command `dbt init` failed at 12:38:40.999760 after 179.30 seconds
+[0m12:38:41.001220 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10631fef0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10669a840>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1068d0a40>]}
+[0m12:38:41.003864 [debug] [MainThread]: Flushing usage events
+[0m12:38:41.429272 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m12:40:04.447233 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106dd2180>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1093e0e00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1093e0b60>]}
+
+
+============================== 12:40:04.450445 | f0d77b79-dc2e-444a-83dc-9a27dd690b2c ==============================
+[0m12:40:04.450445 [info ] [MainThread]: Running with dbt=1.10.9
+[0m12:40:04.450741 [debug] [MainThread]: running dbt with arguments {'send_anonymous_usage_stats': 'True', 'printer_width': '80', 'empty': 'None', 'partial_parse': 'True', 'profiles_dir': '/Users/antoine/.dbt', 'use_experimental_parser': 'False', 'fail_fast': 'False', 'version_check': 'True', 'static_parser': 'True', 'warn_error': 'None', 'log_path': 'logs', 'introspect': 'True', 'target_path': 'None', 'log_cache_events': 'False', 'invocation_command': 'dbt init etl_test_dbt_airflow', 'write_json': 'True', 'indirect_selection': 'eager', 'no_print': 'None', 'cache_selected_only': 'False', 'log_format': 'default', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'debug': 'False', 'use_colors': 'True'}
+[0m12:40:04.460295 [debug] [MainThread]: Starter project path: /Users/antoine/code/test_etl_datmart/.venv_airflow/lib/python3.12/site-packages/dbt/include/starter_project
+[0m12:40:04.464681 [info ] [MainThread]: 
+Your new dbt project "etl_test_dbt_airflow" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m12:40:04.464876 [info ] [MainThread]: Setting up your profile.
+[0m12:43:35.211517 [info ] [MainThread]: Profile etl_test_dbt_airflow written to /Users/antoine/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m12:43:35.218967 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 210.80777, "process_in_blocks": "0", "process_kernel_time": 0.168588, "process_mem_max_rss": "104857600", "process_out_blocks": "0", "process_user_time": 0.682721}
+[0m12:43:35.219574 [debug] [MainThread]: Command `dbt init` succeeded at 12:43:35.219467 after 210.81 seconds
+[0m12:43:35.220073 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106dd2180>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1091a68a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1090bc500>]}
+[0m12:43:35.220463 [debug] [MainThread]: Flushing usage events
+[0m12:43:35.633528 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m12:44:05.982477 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1045c1d60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111aece60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111aecbf0>]}
+
+
+============================== 12:44:05.985599 | 3227dac6-5f4d-4fd6-a342-ba08b3d77886 ==============================
+[0m12:44:05.985599 [info ] [MainThread]: Running with dbt=1.10.9
+[0m12:44:05.985922 [debug] [MainThread]: running dbt with arguments {'log_cache_events': 'False', 'introspect': 'True', 'use_experimental_parser': 'False', 'profiles_dir': '/Users/antoine/.dbt', 'log_format': 'default', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'partial_parse': 'True', 'static_parser': 'True', 'empty': 'None', 'indirect_selection': 'eager', 'printer_width': '80', 'target_path': 'None', 'write_json': 'True', 'debug': 'False', 'send_anonymous_usage_stats': 'True', 'fail_fast': 'False', 'log_path': 'logs', 'cache_selected_only': 'False', 'no_print': 'None', 'warn_error': 'None', 'version_check': 'True', 'quiet': 'False', 'invocation_command': 'dbt debug', 'use_colors': 'True'}
+[0m12:44:05.995292 [info ] [MainThread]: dbt version: 1.10.9
+[0m12:44:05.995493 [info ] [MainThread]: python version: 3.12.11
+[0m12:44:05.995632 [info ] [MainThread]: python path: /Users/antoine/code/test_etl_datmart/.venv_airflow/bin/python3.12
+[0m12:44:05.995750 [info ] [MainThread]: os info: macOS-15.5-arm64-arm-64bit
+[0m12:44:06.036607 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.bigquery'
+[0m12:44:06.036899 [info ] [MainThread]: Using profiles dir at /Users/antoine/.dbt
+[0m12:44:06.037034 [info ] [MainThread]: Using profiles.yml file at /Users/antoine/.dbt/profiles.yml
+[0m12:44:06.037152 [info ] [MainThread]: Using dbt_project.yml file at /Users/antoine/code/test_etl_datmart/dbt_project.yml
+[0m12:44:06.037270 [info ] [MainThread]: Configuration:
+[0m12:44:06.037382 [info ] [MainThread]:   profiles.yml file [[31mERROR invalid[0m]
+[0m12:44:06.037485 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m12:44:06.037584 [info ] [MainThread]: Required dependencies:
+[0m12:44:06.037720 [debug] [MainThread]: Executing "git --help"
+[0m12:44:06.060111 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--super-prefix=<path>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m12:44:06.060543 [debug] [MainThread]: STDERR: "b''"
+[0m12:44:06.060692 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m12:44:06.060842 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m12:44:06.061032 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m12:44:06.061148 [info ] [MainThread]: Could not load dbt_project.yml
+Profile loading failed for the following reason:
+Runtime Error
+  Credentials in profile "pipe_grdf_bigquery", target "dev" invalid: Runtime Error
+    Could not find adapter type bigquery!
+
+
+[0m12:44:06.061261 [info ] [MainThread]: Project loading failed for the following reason:
+ project path </Users/antoine/code/test_etl_datmart/dbt_project.yml> not found
+
+[0m12:44:06.063343 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.11841871, "process_in_blocks": "0", "process_kernel_time": 0.129981, "process_mem_max_rss": "110657536", "process_out_blocks": "0", "process_user_time": 0.682972}
+[0m12:44:06.063621 [debug] [MainThread]: Command `dbt debug` failed at 12:44:06.063562 after 0.12 seconds
+[0m12:44:06.063849 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111aecc80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1045c1d60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x111b07260>]}
+[0m12:44:06.064045 [debug] [MainThread]: Flushing usage events
+[0m12:44:06.432069 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m13:49:24.233705 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104387920>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104ae0ef0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104ae0c80>]}
+
+
+============================== 13:49:24.236839 | 680b9966-0382-4b91-a7f3-0cfb00167b6b ==============================
+[0m13:49:24.236839 [info ] [MainThread]: Running with dbt=1.10.9
+[0m13:49:24.237131 [debug] [MainThread]: running dbt with arguments {'debug': 'False', 'version_check': 'True', 'no_print': 'None', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'quiet': 'False', 'static_parser': 'True', 'use_experimental_parser': 'False', 'send_anonymous_usage_stats': 'True', 'partial_parse': 'True', 'log_cache_events': 'False', 'use_colors': 'True', 'log_path': 'logs', 'empty': 'None', 'indirect_selection': 'eager', 'target_path': 'None', 'invocation_command': 'dbt init test_etl_dbt', 'printer_width': '80', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'write_json': 'True', 'profiles_dir': '/Users/antoine/.dbt', 'log_format': 'default', 'introspect': 'True'}
+[0m13:49:24.246960 [debug] [MainThread]: Starter project path: /Users/antoine/code/test_etl_datmart/.venv_airflow/lib/python3.12/site-packages/dbt/include/starter_project
+[0m13:49:24.250920 [info ] [MainThread]: 
+Your new dbt project "test_etl_dbt" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m13:49:24.251102 [info ] [MainThread]: Setting up your profile.
+[0m13:49:56.373861 [info ] [MainThread]: Profile test_etl_dbt written to /Users/antoine/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m13:49:56.381647 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 32.18368, "process_in_blocks": "0", "process_kernel_time": 0.140701, "process_mem_max_rss": "105447424", "process_out_blocks": "0", "process_user_time": 0.690741}
+[0m13:49:56.382811 [debug] [MainThread]: Command `dbt init` succeeded at 13:49:56.382535 after 32.19 seconds
+[0m13:49:56.383882 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104384c20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x104208cb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1048abe60>]}
+[0m13:49:56.384461 [debug] [MainThread]: Flushing usage events
+[0m13:49:56.817034 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m14:06:00.897469 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106fb8e30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1181e8ec0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1181e8c20>]}
+
+
+============================== 14:06:00.900770 | b82eef5a-1bee-41d5-99d7-7242c7cb390c ==============================
+[0m14:06:00.900770 [info ] [MainThread]: Running with dbt=1.10.9
+[0m14:06:00.901084 [debug] [MainThread]: running dbt with arguments {'use_colors': 'True', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'warn_error': 'None', 'target_path': 'None', 'empty': 'None', 'introspect': 'True', 'log_path': 'logs', 'write_json': 'True', 'debug': 'False', 'printer_width': '80', 'use_experimental_parser': 'False', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'log_cache_events': 'False', 'quiet': 'False', 'profiles_dir': '/Users/antoine/.dbt', 'fail_fast': 'False', 'invocation_command': 'dbt debug', 'version_check': 'True', 'log_format': 'default', 'no_print': 'None', 'indirect_selection': 'eager', 'cache_selected_only': 'False'}
+[0m14:06:00.911138 [info ] [MainThread]: dbt version: 1.10.9
+[0m14:06:00.911446 [info ] [MainThread]: python version: 3.12.11
+[0m14:06:00.911613 [info ] [MainThread]: python path: /Users/antoine/code/test_etl_datmart/.venv_airflow/bin/python3.12
+[0m14:06:00.911747 [info ] [MainThread]: os info: macOS-15.5-arm64-arm-64bit
+[0m14:06:00.964835 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.bigquery'
+[0m14:06:00.965562 [info ] [MainThread]: Using profiles dir at /Users/antoine/.dbt
+[0m14:06:00.965726 [info ] [MainThread]: Using profiles.yml file at /Users/antoine/.dbt/profiles.yml
+[0m14:06:00.965851 [info ] [MainThread]: Using dbt_project.yml file at /Users/antoine/code/test_etl_datmart/dbt_project.yml
+[0m14:06:00.965983 [info ] [MainThread]: Configuration:
+[0m14:06:00.966096 [info ] [MainThread]:   profiles.yml file [[31mERROR invalid[0m]
+[0m14:06:00.966203 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m14:06:00.966304 [info ] [MainThread]: Required dependencies:
+[0m14:06:00.966449 [debug] [MainThread]: Executing "git --help"
+[0m14:06:00.992587 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--super-prefix=<path>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m14:06:00.993097 [debug] [MainThread]: STDERR: "b''"
+[0m14:06:00.993271 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m14:06:00.993632 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m14:06:00.994246 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m14:06:00.994513 [info ] [MainThread]: Could not load dbt_project.yml
+Profile loading failed for the following reason:
+Runtime Error
+  Credentials in profile "pipe_grdf_bigquery", target "dev" invalid: Runtime Error
+    Could not find adapter type bigquery!
+
+
+[0m14:06:00.994687 [info ] [MainThread]: Project loading failed for the following reason:
+ project path </Users/antoine/code/test_etl_datmart/dbt_project.yml> not found
+
+[0m14:06:00.996826 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.14294708, "process_in_blocks": "0", "process_kernel_time": 0.145627, "process_mem_max_rss": "106954752", "process_out_blocks": "0", "process_user_time": 0.767645}
+[0m14:06:00.997128 [debug] [MainThread]: Command `dbt debug` failed at 14:06:00.997076 after 0.14 seconds
+[0m14:06:00.997381 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x106fb8e30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1077bd1c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x1181e8f80>]}
+[0m14:06:00.997593 [debug] [MainThread]: Flushing usage events
+[0m14:06:01.412236 [debug] [MainThread]: An error was encountered while trying to flush usage events
