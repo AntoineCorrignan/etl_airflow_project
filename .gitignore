@@ -1,2 +1,3 @@
 logs/
 .venv_airflow/
+dags/__pycache__/
