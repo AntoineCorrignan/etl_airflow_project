@@ -10,7 +10,7 @@ from airflow.providers.postgres.hooks.postgres import PostgresHook
 
 def create_table_if_not_exists(**kwargs):
     """
-    Crée la table fact_production si elle n'existe pas.
+    Crée la table fact_production si elle n'existe pas, en incluant la colonne id_date.
     """
     try:
         print("Creating table if not exists...")
@@ -26,6 +26,7 @@ def create_table_if_not_exists(**kwargs):
                 valeur DOUBLE PRECISION,
                 unit VARCHAR(255),
                 date_entree TIMESTAMP,
+                id_date DATE,
                 id_site VARCHAR(255),
                 type VARCHAR(255),
                 equipement VARCHAR(255),
@@ -44,7 +45,7 @@ def create_table_if_not_exists(**kwargs):
 
 def extract_and_transform_data(**kwargs):
     """
-    Extrait, transforme et retourne le DataFrame résultant.
+    Extrait, transforme et retourne le DataFrame résultant, en ajoutant la colonne id_date.
     """
     try:
         print("Starting data extraction and transformation...")
@@ -83,17 +84,18 @@ def extract_and_transform_data(**kwargs):
         joined_df.dropna(subset=['valeur'], inplace=True)
         print(f"Data after filtering non-numeric values: {len(joined_df)} rows")
         
-        # Convertir d'abord les colonnes en type str, excepté date_entree
+        # Convertir les colonnes en type str, SAUF 'valeur' et 'date_entree'
         for col in ['variable', 'id_variable', 'unit', 'id_site', 'type', 'equipement']:
             if col in joined_df.columns:
                 joined_df[col] = joined_df[col].astype(str)
         
-        # Correction pour la colonne 'date_entree'
-        # Convertir en numeric d'abord, puis en datetime avec l'unité 'ms'
+        # Conversion de la colonne 'date_entree'
         joined_df['date_entree'] = pd.to_datetime(joined_df['date_entree'], unit='ms')
+        
+        # Création de la colonne 'id_date' pour la jointure
+        joined_df['id_date'] = joined_df['date_entree'].dt.date
 
         # 5. Stockage des données pour la tâche suivante
-        # On utilise date_format='iso' pour garantir que le format JSON est bien lisible par la tâche de chargement
         kwargs['ti'].xcom_push(key='transformed_data_df', value=joined_df.to_json(orient='records', date_format='iso'))
         print(f"Data transformation completed. Final dataset: {len(joined_df)} rows")
         return f"Successfully processed {len(joined_df)} rows"
@@ -103,7 +105,7 @@ def extract_and_transform_data(**kwargs):
 
 def load_data_to_neon(**kwargs):
     """
-    Charge les données transformées dans la table 'fact_production' du datamart Neon.
+    Version alternative utilisant execute_values au lieu de copy_from
     """
     try:
         print("Starting data loading...")
@@ -128,58 +130,45 @@ def load_data_to_neon(**kwargs):
         cur = conn.cursor()
         
         try:
-            # Créer une table temporaire
-            create_temp_table = """
-                CREATE TEMP TABLE IF NOT EXISTS temp_fact_production (
-                    variable VARCHAR(255),
-                    id_variable VARCHAR(255),
-                    valeur DOUBLE PRECISION,
-                    unit VARCHAR(255),
-                    date_entree TIMESTAMP,
-                    id_site VARCHAR(255),
-                    type VARCHAR(255),
-                    equipement VARCHAR(255)
-                );
-            """
-            cur.execute(create_temp_table)
-
-            # Charger les données dans la table temporaire
-            output = StringIO()
-
-            # Convertir les colonnes nécessaires en types appropriés
-            df_transformed['valeur'] = pd.to_numeric(df_transformed['valeur'], errors='coerce')
-            df_transformed['date_entree'] = pd.to_datetime(df_transformed['date_entree'], errors='coerce')
-
-            df_transformed.to_csv(output, sep='\t', header=False, index=False, na_rep='\\N')
-            output.seek(0)
-            cur.copy_from(
-                output, 
-                'temp_fact_production', 
-                sep='\t', 
-                columns=list(df_transformed.columns),
-                null='\\N'
-            )
+            # Réorganiser le DataFrame
+            df_reordered = df_transformed[[
+                'variable',
+                'id_variable',
+                'valeur',
+                'unit',
+                'date_entree',
+                'id_date',
+                'id_site',
+                'type',
+                'equipement'
+            ]]
             
-            # Utiliser ON CONFLICT pour insérer ou mettre à jour
+            # Convertir en liste de tuples pour execute_values
+            data_tuples = [tuple(row) for row in df_reordered.values]
+            
+            # Utiliser execute_values pour l'upsert direct
+            from psycopg2.extras import execute_values
+            
             upsert_sql = """
                 INSERT INTO fact_production (
-                    variable, id_variable, valeur, unit, date_entree, id_site, type, equipement
-                )
-                SELECT
-                    variable, id_variable, valeur, unit, date_entree, id_site, type, equipement
-                FROM temp_fact_production
+                    variable, id_variable, valeur, unit, date_entree, id_date, id_site, type, equipement
+                ) VALUES %s
                 ON CONFLICT (id_variable, date_entree) DO UPDATE
                 SET
+                    variable = EXCLUDED.variable,
                     valeur = EXCLUDED.valeur,
                     unit = EXCLUDED.unit,
+                    id_date = EXCLUDED.id_date,
+                    id_site = EXCLUDED.id_site,
                     type = EXCLUDED.type,
                     equipement = EXCLUDED.equipement;
             """
-            cur.execute(upsert_sql)
+            
+            execute_values(cur, upsert_sql, data_tuples)
             
             conn.commit()
-            print(f"Successfully loaded {len(df_transformed)} rows into fact_production with UPSERT")
-            return f"Successfully loaded {len(df_transformed)} rows"
+            print(f"Successfully loaded {len(df_reordered)} rows into fact_production with execute_values")
+            return f"Successfully loaded {len(df_reordered)} rows"
             
         except (Exception, psycopg2.Error) as error:
             print(f"Error loading data into Neon: {error}")
@@ -192,6 +181,39 @@ def load_data_to_neon(**kwargs):
     except Exception as e:
         print(f"Error in load_data_to_neon: {str(e)}")
         raise
+
+def add_foreign_keys_to_fact(**kwargs):
+    """
+    Ajoute la clé étrangère de la table dim_date à fact_production.
+    """
+    try:
+        print("Adding foreign keys to fact_production...")
+        
+        # Connexion à la base de données Neon
+        neon_hook = PostgresHook(postgres_conn_id='bdd_neon_recette')
+        
+        # Requête SQL pour ajouter la clé étrangère
+        alter_table_sql = """
+            ALTER TABLE IF EXISTS fact_production
+            ADD CONSTRAINT fk_fact_id_date
+            FOREIGN KEY (id_date)
+            REFERENCES dim_date (date_key)
+            ON UPDATE CASCADE ON DELETE RESTRICT;
+        """
+        
+        # Exécution de la requête
+        neon_hook.run(alter_table_sql)
+        print("Foreign key added to fact_production successfully.")
+        return "Foreign key creation successful"
+        
+    except Exception as e:
+        # Gérer l'erreur si la clé étrangère existe déjà
+        if "already exists" in str(e):
+            print("Foreign key already exists, skipping.")
+            return "Foreign key already exists"
+        else:
+            print(f"Error adding foreign key: {str(e)}")
+            raise
 
 # Configuration par défaut
 default_args = {
@@ -207,7 +229,7 @@ with DAG(
     dag_id="etl_fact_production_dag",
     default_args=default_args,
     start_date=pendulum.datetime(2023, 1, 1, tz="UTC"),
-    schedule="0 7,14,16 * * *",  # Planification pour 7h et 14h
+    schedule="0 7,14,16 * * *",
     catchup=False,
     tags=["etl", "datamart", "production"],
     description="ETL pipeline for fact_production table from variables and entries",
@@ -232,5 +254,11 @@ with DAG(
         python_callable=load_data_to_neon,
     )
     
+    # Tâche 4 : Ajout des clés étrangères
+    add_foreign_keys_task = PythonOperator(
+        task_id="add_foreign_keys_to_fact",
+        python_callable=add_foreign_keys_to_fact,
+    )
+    
     # Définition de l'ordre d'exécution
-    create_table_task >> extract_and_transform_task >> load_data_to_neon_task
+    create_table_task >> extract_and_transform_task >> load_data_to_neon_task >> add_foreign_keys_task
